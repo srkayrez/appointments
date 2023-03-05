@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apontamentos</title>
+    
+    <script>
+        function pegarDados(){
+            let input1, input2;
+            input1 = document.getElementById('input1').value
+            input2 = document.getElementById('input2').value
+            localStorage.setItem('value1', input1)
+            localStorage.setItem('value2', input2)
+            location.reload()
+        }
+
+        window.onload = function getDados(){
+            morning = localStorage.getItem('value1')
+            afternoon = localStorage.getItem('value2')
+            console.log(morning,afternoon)
+
+            document.getElementById('result1').innerHTML = morning
+            document.getElementById('result2').innerHTML = afternoon
+        }
+    </script>
+
+    <style>
+        body{text-align: center;}
+    </style>
+</head>
+<body>
+    <div>
+        <p>09:00 as 12:00</p>
+        <textarea id="input1"></textarea>
+
+        <p>13:00 as 15:00</p>
+        <textarea id="input2"></textarea>
+    </div>
+
+    <button onclick="pegarDados()">Salvar</button>
+
+    <div>
+        <p>09:00 as 12:00</p>
+        <p id="result1"></p>
+        <p>13:00 as 15:00</p>
+        <p id="result2"></p>
+    </div>
+    
+</body>
+</html>
