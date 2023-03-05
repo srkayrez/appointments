@@ -7,13 +7,19 @@
     <title>Apontamentos</title>
     
     <script>
-        function pegarDados(){
-            let input1, input2;
-            input1 = document.getElementById('input1').value
+        function pegarDados1(){
+            let input1;
+            input1 = document.getElementById('input1').value;
+            localStorage.setItem('value1', input1);
+         
+        }
+        function pegarDados2(){
+            
+            let input1;
             input2 = document.getElementById('input2').value
-            localStorage.setItem('value1', input1)
             localStorage.setItem('value2', input2)
-            location.reload()
+        
+        
         }
 
         window.onload = function getDados(){
@@ -21,31 +27,96 @@
             afternoon = localStorage.getItem('value2')
             console.log(morning,afternoon)
 
-            document.getElementById('result1').innerHTML = morning
-            document.getElementById('result2').innerHTML = afternoon
+            document.getElementById('input1').innerHTML = morning
+            document.getElementById('input2').innerHTML = afternoon
+
         }
+        function copy1(){
+        
+            let textoCopiado = localStorage.getItem('value1');
+            let mostrarElemento = document.createElement('textarea');
+            mostrarElemento.value = textoCopiado;
+            mostrarElemento.setAttribute('readonly', '');
+            document.body.appendChild(mostrarElemento);
+            mostrarElemento.select();
+            document.execCommand('copy');
+            document.body.removeChild(mostrarElemento);
+            alert("Apontamento antes do almoço copiado com sucesso");
+    
+        }
+        function copy2(){ 
+
+            let textoCopiado = localStorage.getItem('value2');
+            let mostrarElemento = document.createElement('textarea');
+            mostrarElemento.value = textoCopiado;
+            mostrarElemento.setAttribute('readonly', '');
+            document.body.appendChild(mostrarElemento);
+            mostrarElemento.select();
+            document.execCommand('copy');
+            document.body.removeChild(mostrarElemento);
+            alert("Apontamento pós almoço copiado com sucesso");
+
+        }
+
     </script>
 
     <style>
-        body{text-align: center;}
+        body{
+            text-align: center;
+            background-color: rgb(49, 49, 49);
+            font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+        }
+        textarea{
+            width: 400px;
+            height: 100px;
+            border-radius: 20px;
+            padding: 0.8em;
+        }
+
+        button{
+            color: white;
+            font-size: large;
+        }
+
+        .cards{
+            border-radius: 20px;
+            background-color: rgb(255, 255, 255);
+            margin: 2em;
+            padding: 1em;
+        }
+
+        .btn{
+            width: 400px;
+            margin-top: 0.5em;
+            border-radius: 15px;
+            padding: 0.5em;
+            background-color: rgb(0, 161, 255);
+        }
+        
+        .btn:hover{
+            background-color: rgb(84, 194, 71);
+        }
+        
+       
+
     </style>
 </head>
 <body>
-    <div>
+    <div class="cards">
+        <h1>Meus Apontamentos</h1>
         <p>09:00 as 12:00</p>
         <textarea id="input1"></textarea>
+        <br>
+        <button class="btn" onclick="pegarDados1()">Salvar</button>
+        <br>
+        <button class="btn" onclick="copy1()">Copiar</button>
 
         <p>13:00 as 15:00</p>
         <textarea id="input2"></textarea>
-    </div>
-
-    <button onclick="pegarDados()">Salvar</button>
-
-    <div>
-        <p>09:00 as 12:00</p>
-        <p id="result1"></p>
-        <p>13:00 as 15:00</p>
-        <p id="result2"></p>
+        <br>
+        <button class="btn" onclick="pegarDados2()">Salvar</button>
+        <br>
+        <button class="btn" onclick="copy2()">Copiar</button>
     </div>
     
 </body>
