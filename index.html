@@ -25,7 +25,6 @@
         window.onload = function getDados(){
             morning = localStorage.getItem('value1')
             afternoon = localStorage.getItem('value2')
-            console.log(morning,afternoon)
 
             document.getElementById('input1').innerHTML = morning
             document.getElementById('input2').innerHTML = afternoon
@@ -104,14 +103,14 @@
 <body>
     <div class="cards">
         <h1>Meus Apontamentos</h1>
-        <p>09:00 as 12:00</p>
+        <p>Manhã</p>
         <textarea id="input1"></textarea>
         <br>
         <button class="btn" onclick="pegarDados1()">Salvar</button>
         <br>
         <button class="btn" onclick="copy1()">Copiar</button>
 
-        <p>13:00 as 15:00</p>
+        <p>Tarde</p>
         <textarea id="input2"></textarea>
         <br>
         <button class="btn" onclick="pegarDados2()">Salvar</button>
