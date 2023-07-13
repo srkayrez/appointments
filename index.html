@@ -57,6 +57,12 @@
 
         }
 
+        function openSite(type){
+
+            type == true ? window.open('https://admin.programmers.com.br/') : window.open('https://pontoeletronico.programmers.com.br/');
+           
+        }
+
     </script>
 
     <style>
@@ -96,26 +102,47 @@
             background-color: rgb(84, 194, 71);
         }
         
+        .btn2 {
+            width: 25%;
+            margin-top: 0.5em;
+            border-radius: 15px;
+            padding: 0.5em;
+            background-color: rgb(0, 161, 255);
+        }
+    
        
 
     </style>
 </head>
 <body>
     <div class="cards">
-        <h1>Meus Apontamentos</h1>
-        <p>Manhã</p>
-        <textarea id="input1"></textarea>
-        <br>
-        <button class="btn" onclick="pegarDados1()">Salvar</button>
-        <br>
-        <button class="btn" onclick="copy1()">Copiar</button>
+        <form>
 
-        <p>Tarde</p>
-        <textarea id="input2"></textarea>
-        <br>
-        <button class="btn" onclick="pegarDados2()">Salvar</button>
-        <br>
-        <button class="btn" onclick="copy2()">Copiar</button>
+            <h1>Meus Apontamentos</h1>
+            <div>
+                <button onclick="openSite(true)" class="btn2" id="type">
+                        Admin
+                    </button>
+                    <button onclick="openSite(false)" class="btn2">
+                        Ponto eletronico
+                    </button>
+            </div>
+            <p>Manhã</p>
+            <textarea onblur="pegarDados1()" id="input1"></textarea>
+            <!-- <br> -->
+            <!-- <button type="submit" class="btn" onclick="pegarDados1()">Salvar</button> -->
+            <br>
+            <button type="button" class="btn" onclick="copy1()">Copiar</button>
+        </form>
+
+        <form>
+            <p>Tarde</p>
+            <textarea onblur="pegarDados2()" id="input2"></textarea>
+            <!-- <br> -->
+            <!-- <button class="btn" onclick="pegarDados2()">Salvar</button> -->
+            <br>
+            <button class="btn" onclick="copy2()">Copiar</button>
+        </form>
     </div>
     
 </body>
